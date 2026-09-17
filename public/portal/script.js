@@ -13,7 +13,7 @@ const SECRET_CODE = "Mathsucks";
        "https://sites.google.com/view/docsmath/home?authuser=0";
 */
 
-const DESTINATION_URL = "https://sites.google.com/view/docsmath/";
+const DESTINATION_URL = "/lessons";
 
 
 /* ==========================================
