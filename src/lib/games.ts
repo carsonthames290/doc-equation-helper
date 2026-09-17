@@ -49,8 +49,8 @@ export const games: Game[] = [
     slug: "snow-rider",
     title: "Snow Rider",
     blurb: "Lesson 1 — Slope and velocity on a downhill track.",
-    kind: "html",
-    html: snowRiderHtml,
+    kind: "url",
+    src: "https://snowrider3d.com/",
   },
   {
     slug: "basket-random",
