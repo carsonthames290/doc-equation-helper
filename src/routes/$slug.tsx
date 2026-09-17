@@ -37,21 +37,25 @@ function GamePage() {
 
         <div className="mt-6 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
           <iframe
-            src={game.embed}
+            key={game.slug}
+            {...(game.kind === "url" ? { src: game.src } : { srcDoc: game.html })}
             title={game.title}
             className="h-[70vh] w-full"
             allow="fullscreen; autoplay; gamepad; keyboard-map"
+            allowFullScreen
           />
         </div>
 
-        <a
-          href={game.embed}
-          target="_blank"
-          rel="noreferrer"
+        <button
+          type="button"
+          onClick={() => {
+            const el = document.querySelector("iframe");
+            el?.requestFullscreen?.();
+          }}
           className="mt-4 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
         >
           Fullscreen
-        </a>
+        </button>
       </main>
     </div>
   );
