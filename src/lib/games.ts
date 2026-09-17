@@ -4,18 +4,6 @@ export type Game = {
   blurb: string;
 } & ({ kind: "url"; src: string } | { kind: "html"; html: string });
 
-const snowRiderHtml = `<!DOCTYPE html><html><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/drippy-cat/snowrider3D@c82fe583cbffafa502b0aa3ed2da0053972e0c80/TemplateData/style.css">
-<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}#gameContainer{width:100%;height:100%}#gameContainer canvas{width:100%!important;height:100%!important}</style>
-</head><body>
-<div id="gameContainer"></div>
-<script src="https://cdn.jsdelivr.net/gh/drippy-cat/snowrider3D@c82fe583cbffafa502b0aa3ed2da0053972e0c80/TemplateData/UnityProgress.js"><\/script>
-<script src="https://cdn.jsdelivr.net/gh/drippy-cat/snowrider3D@c82fe583cbffafa502b0aa3ed2da0053972e0c80/Build/UnityLoader.js"><\/script>
-<script>
-var gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/drippy-cat/snowrider3D@c82fe583cbffafa502b0aa3ed2da0053972e0c80/Build/SnowRider3D-gd-1.json", {onProgress: UnityProgress, Module:{onRuntimeInitialized: function(){UnityProgress(gameInstance, "complete")}}});
-<\/script>
-</body></html>`;
 
 const basketRandomHtml = `<!DOCTYPE html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -49,8 +37,8 @@ export const games: Game[] = [
     slug: "snow-rider",
     title: "Snow Rider",
     blurb: "Lesson 1 — Slope and velocity on a downhill track.",
-    kind: "html",
-    html: snowRiderHtml,
+    kind: "url",
+    src: "https://snowrider3d.com/",
   },
   {
     slug: "basket-random",
