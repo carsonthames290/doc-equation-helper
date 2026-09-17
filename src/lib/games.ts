@@ -2,45 +2,83 @@ export type Game = {
   slug: string;
   title: string;
   blurb: string;
-  embed: string;
-};
+} & ({ kind: "url"; src: string } | { kind: "html"; html: string });
+
+const snowRiderHtml = `<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/drippy-cat/snowrider3D@c82fe583cbffafa502b0aa3ed2da0053972e0c80/TemplateData/style.css">
+<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}#gameContainer{width:100%;height:100%}#gameContainer canvas{width:100%!important;height:100%!important}</style>
+</head><body>
+<div id="gameContainer"></div>
+<script src="https://cdn.jsdelivr.net/gh/drippy-cat/snowrider3D@c82fe583cbffafa502b0aa3ed2da0053972e0c80/TemplateData/UnityProgress.js"><\/script>
+<script src="https://cdn.jsdelivr.net/gh/drippy-cat/snowrider3D@c82fe583cbffafa502b0aa3ed2da0053972e0c80/Build/UnityLoader.js"><\/script>
+<script>
+var gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/drippy-cat/snowrider3D@c82fe583cbffafa502b0aa3ed2da0053972e0c80/Build/SnowRider3D-gd-1.json", {onProgress: UnityProgress, Module:{onRuntimeInitialized: function(){UnityProgress(gameInstance, "complete")}}});
+<\/script>
+</body></html>`;
+
+const basketRandomHtml = `<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rz-6-5-z/bsrandm@main/style.css">
+<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}</style>
+<script>
+window.addEventListener("keydown", function(e){ if([32,37,38,39,40].indexOf(e.keyCode) > -1){ e.preventDefault(); } }, false);
+<\/script>
+</head><body>
+<script src="https://cdn.jsdelivr.net/gh/rz-6-5-z/bsrandm@main/box2d.wasm.js"><\/script>
+<script src="https://cdn.jsdelivr.net/gh/rz-6-5-z/bsrandm@main/scripts/supportcheck.js"><\/script>
+<script src="https://cdn.jsdelivr.net/gh/rz-6-5-z/bsrandm@main/scripts/offlineclient.js"><\/script>
+<script src="https://cdn.jsdelivr.net/gh/rz-6-5-z/bsrandm@main/scripts/main.js"><\/script>
+</body></html>`;
+
+const gunSpinHtml = `<!DOCTYPE html><html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sidharthkiscool/monkeygg2.github.io@762aa28c099959eb0d64028560f0d61b195b02da/games/gunspin/TemplateData/style.css">
+<style>html,body{margin:0;height:100%;background:#000;overflow:hidden}#unityContainer{width:100%;height:100%}#unityContainer canvas{width:100%!important;height:100%!important}</style>
+</head><body>
+<div id="unityContainer"></div>
+<script src="https://cdn.jsdelivr.net/gh/sidharthkiscool/monkeygg2.github.io@762aa28c099959eb0d64028560f0d61b195b02da/games/gunspin/TemplateData/UnityProgress.js"><\/script>
+<script src="https://cdn.jsdelivr.net/gh/sidharthkiscool/monkeygg2.github.io@762aa28c099959eb0d64028560f0d61b195b02da/games/gunspin/Build/UnityLoader.js"><\/script>
+<script>
+window.gameInstance = UnityLoader.instantiate("unityContainer", "https://cdn.jsdelivr.net/gh/RobiFet/workflow@99ef84fd04d7997590ab93310e15720466e6d7e1/composer/gs.json", {onProgress: UnityProgress});
+<\/script>
+</body></html>`;
 
 export const games: Game[] = [
   {
     slug: "snow-rider",
     title: "Snow Rider",
     blurb: "Lesson 1 — Slope and velocity on a downhill track.",
-    embed: "https://snowrider3d.com/",
+    kind: "html",
+    html: snowRiderHtml,
   },
   {
     slug: "basket-random",
     title: "Basket Random",
     blurb: "Lesson 2 — Probability and projectile arcs.",
-    embed: "https://basket-random.io/",
+    kind: "html",
+    html: basketRandomHtml,
   },
   {
     slug: "kart-bros",
     title: "Kart Bros",
     blurb: "Lesson 3 — Speed, distance and time.",
-    embed: "https://kartbros.io/",
+    kind: "url",
+    src: "https://www.miniplay.com/embed/kart-bros",
   },
   {
     slug: "smash-karts",
     title: "Smash Karts",
     blurb: "Lesson 4 — Coordinates and collision geometry.",
-    embed: "https://smashkarts.io/",
-  },
-  {
-    slug: "rocket-car",
-    title: "Rocket Car",
-    blurb: "Lesson 5 — Acceleration and quadratic motion.",
-    embed: "https://rocketcars.io/",
+    kind: "url",
+    src: "https://www.miniplay.com/embed/smash-karts",
   },
   {
     slug: "gun-spin",
     title: "Gun Spin",
-    blurb: "Lesson 6 — Angles, rotation and recoil.",
-    embed: "https://gunspin.io/",
+    blurb: "Lesson 5 — Angles, rotation and recoil.",
+    kind: "html",
+    html: gunSpinHtml,
   },
 ];
 
