@@ -38,7 +38,7 @@ function GamePage() {
         <div className="mt-6 overflow-hidden rounded-lg border border-border bg-card shadow-sm">
           <iframe
             key={game.slug}
-            {...(game.kind === "url" ? { src: game.src } : { srcDoc: game.html })}
+            src={game.src}
             title={game.title}
             className="h-[70vh] w-full"
             allow="fullscreen; autoplay; gamepad; keyboard-map"
