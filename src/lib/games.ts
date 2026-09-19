@@ -40,7 +40,7 @@ export const games: Game[] = [
     title: "Gun Spin",
     blurb: "Lesson 5 — Angles, rotation and recoil.",
     kind: "url",
-    src: "https://www.y8.com/embed/gunspin",
+    src: "https://html5.gamedistribution.com/917cce8c44c44638a8cdc2a1794b65c8/",
   },
 ];
 
